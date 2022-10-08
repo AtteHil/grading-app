@@ -1,4 +1,3 @@
-
 import os
 from tkinter import *
 
@@ -44,10 +43,4 @@ badButton=Button(root, text="Bad", fg='white', bg='red', padx=10, pady=5,command
 
 
 root.mainloop()
-
-
-
-
-
-
 
