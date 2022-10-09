@@ -8,25 +8,35 @@ root = Tk()
 root.title('Grade this')
 root.geometry("500x600")
 
+def main():
+    SetupStart()
 
-Descritpion= Label(root, text="Grade product show with buttons below").grid(row=0, columnspan=2)
 
+def SetupStart():
+    global list_images
+    global small_images
+    global count
+    
+    path= os.getcwd()
+    root.iconbitmap(path)
+    Descritpion= Label(root, text="Grade product show with buttons below").grid(row=0, columnspan=2)
+    my_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((500,500), Image.Resampling.LANCZOS))
 
-path= os.getcwd()
-root.iconbitmap(path)
-my_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((500,500), Image.Resampling.LANCZOS))
+    my_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((500,500), Image.Resampling.LANCZOS))
+    my_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((500,500), Image.Resampling.LANCZOS))
+    small_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((90,90), Image.Resampling.LANCZOS))
+    small_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((90,90), Image.Resampling.LANCZOS))
+    small_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((90,90), Image.Resampling.LANCZOS))
 
-my_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((500,500), Image.Resampling.LANCZOS))
-my_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((500,500), Image.Resampling.LANCZOS))
-small_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((90,90), Image.Resampling.LANCZOS))
-small_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((90,90), Image.Resampling.LANCZOS))
-small_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((90,90), Image.Resampling.LANCZOS))
+    list_images = [my_image1,my_image2, my_image3]
+    small_images= [small_image1, small_image2, small_image3]
+    count= len(list_images)
+    imgLabel= Label(image=my_image1)
+    imgLabel.grid(row=1,columnspan=2)
+        
+    Goodbutton= Button(root, text="Good", fg='black', bg='green',padx=10, pady=5 , command=lambda: Good(2)).grid(row=2,column=0)
 
-list_images = [my_image1,my_image2, my_image3]
-small_images= [small_image1, small_image2, small_image3]
-count= len(list_images)
-imgLabel= Label(image=my_image1)
-imgLabel.grid(row=1,columnspan=2)
+    badButton=Button(root, text="Bad", fg='white', bg='red', padx=10, pady=5,command=lambda: Bad(2)).grid(row=2,column=1)
 
 
 
@@ -70,7 +80,7 @@ def makeTopLevel():
 
 def Good(number):
     global imgLabel
-    global count
+    
     if count == number-1:
         a_list.append(1)
         makeTopLevel()
@@ -97,11 +107,7 @@ def Bad(number):
 
 
 
-Goodbutton= Button(root, text="Good", fg='black', bg='green',padx=10, pady=5 , command=lambda: Good(2)).grid(row=2,column=0)
 
-badButton=Button(root, text="Bad", fg='white', bg='red', padx=10, pady=5,command=lambda: Bad(2)).grid(row=2,column=1)
-
-
-
+main()
 root.mainloop()
 
