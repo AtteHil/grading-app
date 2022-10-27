@@ -21,9 +21,9 @@ def main():
     imgLabel= Label(image=list_images[0])
     imgLabel.grid(row=1,columnspan=7)
         
-    Goodbutton= Button(root, text="S tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(2)).grid(row=2,column=0)
+    STier= Button(root, text="S tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: sTier(2)).grid(row=2,column=0)
 
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(2)).grid(row=2,column=1)
+    ATier=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: aTier(2)).grid(row=2,column=1)
 
     BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(2)).grid(row=2, column=2)
 
@@ -39,7 +39,6 @@ def makelists():
     global list_images
     global small_images
     my_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((500,500), Image.Resampling.LANCZOS))
-
     my_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((500,500), Image.Resampling.LANCZOS))
     my_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((500,500), Image.Resampling.LANCZOS))
     my_image4=ImageTk.PhotoImage(Image.open("pics/breezer.png").resize((500,500), Image.Resampling.LANCZOS))
@@ -130,134 +129,86 @@ def makeTopLevel(): ## opens new window and makes your chart
                 fTierInfo[1]=fTierInfo[1]+1
         
 
-    
+def Buttons(number):
+    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
+    STier= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: sTier(number+1)).grid(row=2,column=0)
+    ATier=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: aTier(number+1)).grid(row=2,column=1)
+    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
+    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
+    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
+    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
+    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    return
     
 
-def Good(number): ##Good button function
-    global imgLabel
+def sTier(number): 
     
     if count == number-1:
         a_list.append(0)
         makeTopLevel()
         return
-   
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+
+    Buttons(number)
     a_list.append(0)
     
-def Bad(number): ##bad button function
-    global imgLabel
+def aTier(number): 
+    
     if count == number-1:
         a_list.append(1)
         makeTopLevel()
         return
 
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    Buttons(number)
     a_list.append(1)
     
 def bTier(number):
-    global imgLabel
+    
     if count == number-1:
         a_list.append(2)
         makeTopLevel()
         return
 
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    Buttons(number)
     a_list.append(2)
 
 def cTier(number):
-    global imgLabel
+    
     if count == number-1:
         a_list.append(3)
         makeTopLevel()
         return
 
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    Buttons(number)
     a_list.append(3)
 
 def dTier(number):
-    global imgLabel
+    
     if count == number-1:
         a_list.append(4)
         makeTopLevel()
         return
 
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    Buttons(number)
     a_list.append(4)
 
 def eTier(number):
-    global imgLabel
+    
     if count == number-1:
         a_list.append(5)
         makeTopLevel()
         return
 
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    Buttons(number)
     a_list.append(5)
 
 def fTier(number):
-    global imgLabel
+
     if count == number-1:
         a_list.append(6)
         makeTopLevel()
         return
 
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
-    
-    Goodbutton= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: Good(number+1)).grid(row=2,column=0)
-    badButton=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: Bad(number+1)).grid(row=2,column=1)
-    BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
-    CTier= Button(root, text='C tier',fg = 'black', bg='green', padx= 10, pady= 5, command=lambda: cTier(number+1)).grid(row=2, column=3)
-    DTier= Button(root, text='D tier',fg = 'black', bg='cyan', padx= 10, pady= 5, command=lambda: dTier(number+1)).grid(row=2, column=4)
-    ETier= Button(root, text='E tier',fg = 'black', bg='SlateBlue1', padx= 10, pady= 5, command=lambda: eTier(number+1)).grid(row=2, column=5)
-    DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(number+1)).grid(row=2, column=6)
+    Buttons(number)
     a_list.append(6)
 
 
