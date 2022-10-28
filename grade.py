@@ -7,7 +7,7 @@ a_list=[] ## set to global so I can access it in different methods
 root = Tk() ## root window set
 root.title('Grade this')
 root.geometry("500x600")
-
+root.configure(bg='black')
 
 def main():
     
@@ -35,13 +35,15 @@ def main():
 
     DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(2)).grid(row=2, column=6)
 
+def RBGAImage(path):
+    return Image.open(path).convert("RGBA")
 def makelists():
     global list_images
     global small_images
     my_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((500,500), Image.Resampling.LANCZOS))
     my_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((500,500), Image.Resampling.LANCZOS))
-    my_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((500,500), Image.Resampling.LANCZOS))
-    my_image4=ImageTk.PhotoImage(Image.open("pics/breezer.png").resize((500,500), Image.Resampling.LANCZOS))
+    my_image3=ImageTk.PhotoImage(RBGAImage("pics/breezer.png").resize((500,500), Image.Resampling.LANCZOS))
+    my_image4=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((500,500), Image.Resampling.LANCZOS))
     my_image5=ImageTk.PhotoImage(Image.open("pics/cider.jpg").resize((500,500), Image.Resampling.LANCZOS))
     my_image6=ImageTk.PhotoImage(Image.open("pics/sandels.jpg").resize((500,500), Image.Resampling.LANCZOS))
     my_image7=ImageTk.PhotoImage(Image.open("pics/longdrinkKoff.jpg").resize((500,500), Image.Resampling.LANCZOS))
@@ -130,7 +132,7 @@ def makeTopLevel(): ## opens new window and makes your chart
         
 
 def Buttons(number):
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
+    imgLabel= Label(image=list_images[number-1],bg='black').grid(row=1,columnspan=7)
     STier= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: sTier(number+1)).grid(row=2,column=0)
     ATier=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: aTier(number+1)).grid(row=2,column=1)
     BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
