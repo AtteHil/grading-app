@@ -7,7 +7,7 @@ a_list=[] ## set to global so I can access it in different methods
 root = Tk() ## root window set
 root.title('Grade this')
 root.geometry("500x600")
-
+root.configure(bg='black')
 
 def main():
     
@@ -15,10 +15,10 @@ def main():
 
     path= os.getcwd()
     root.iconbitmap(path)
-    Descritpion= Label(root, text="Grade product show with buttons below").grid(row=0, columnspan=7)
+    Descritpion= Label(root, text="Grade product show with buttons below",fg='yellow', bg='black', font='Helvetica 18 bold').grid(row=0, columnspan=7)
     makelists()
     count= len(list_images)
-    imgLabel= Label(image=list_images[0])
+    imgLabel= Label(image=list_images[0], bg='black')
     imgLabel.grid(row=1,columnspan=7)
         
     STier= Button(root, text="S tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: sTier(2)).grid(row=2,column=0)
@@ -35,27 +35,33 @@ def main():
 
     DTier= Button(root, text='F tier',fg = 'black', bg='maroon1', padx= 10, pady= 5, command=lambda: fTier(2)).grid(row=2, column=6)
 
+def RBGAImageBig(path):
+    return Image.open(path).convert("RGBA").resize((500,500),Image.Resampling.LANCZOS)
+def RBGAImageSmall(path):
+    return Image.open(path).convert("RGBA").resize((55,55),Image.Resampling.LANCZOS)
 def makelists():
     global list_images
     global small_images
-    my_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((500,500), Image.Resampling.LANCZOS))
-    my_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((500,500), Image.Resampling.LANCZOS))
-    my_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((500,500), Image.Resampling.LANCZOS))
-    my_image4=ImageTk.PhotoImage(Image.open("pics/breezer.png").resize((500,500), Image.Resampling.LANCZOS))
-    my_image5=ImageTk.PhotoImage(Image.open("pics/cider.jpg").resize((500,500), Image.Resampling.LANCZOS))
-    my_image6=ImageTk.PhotoImage(Image.open("pics/sandels.jpg").resize((500,500), Image.Resampling.LANCZOS))
-    my_image7=ImageTk.PhotoImage(Image.open("pics/longdrinkKoff.jpg").resize((500,500), Image.Resampling.LANCZOS))
-    list_images = [my_image1,my_image2, my_image3, my_image4,my_image5,my_image6,my_image7]
+    my_image1= ImageTk.PhotoImage(RBGAImageBig("pics/longdrink1.png"))
+    my_image2=ImageTk.PhotoImage(RBGAImageBig("pics/banana1.png"))
+    my_image3=ImageTk.PhotoImage(RBGAImageBig("pics/breezer.png"))
+    my_image4=ImageTk.PhotoImage(RBGAImageBig("pics/karhu1.png"))
+    my_image5=ImageTk.PhotoImage(RBGAImageBig("pics/coca-cola.png"))
+    my_image6=ImageTk.PhotoImage(RBGAImageBig("pics/santtu1.png"))
+    my_image7=ImageTk.PhotoImage(RBGAImageBig("pics/pepis-make.png"))
+    my_image8= ImageTk.PhotoImage(RBGAImageBig("pics/longdrinkKoff1.png"))
+    list_images = [my_image1,my_image2, my_image3, my_image4,my_image5,my_image6,my_image7, my_image8]
 
-    small_image2=ImageTk.PhotoImage(Image.open("pics/banana.jpg").resize((55,55), Image.Resampling.LANCZOS))
-    small_image1= ImageTk.PhotoImage(Image.open("pics/longdrink.jpg").resize((55,55), Image.Resampling.LANCZOS))
-    small_image3=ImageTk.PhotoImage(Image.open("pics/karhu.jfif").resize((55,55), Image.Resampling.LANCZOS))
-    small_image4=ImageTk.PhotoImage(Image.open("pics/breezer.png").resize((55,55), Image.Resampling.LANCZOS))
-    small_image5=ImageTk.PhotoImage(Image.open("pics/cider.jpg").resize((55,55), Image.Resampling.LANCZOS))
-    small_image6=ImageTk.PhotoImage(Image.open("pics/sandels.jpg").resize((55,55), Image.Resampling.LANCZOS))
-    small_image7=ImageTk.PhotoImage(Image.open("pics/longdrinkKoff.jpg").resize((55,55), Image.Resampling.LANCZOS))
+    small_image2=ImageTk.PhotoImage(RBGAImageSmall("pics/longdrink1.png"))
+    small_image1= ImageTk.PhotoImage(RBGAImageSmall("pics/banana1.png"))
+    small_image3=ImageTk.PhotoImage(RBGAImageSmall("pics/breezer.png"))
+    small_image4=ImageTk.PhotoImage(RBGAImageSmall("pics/karhu1.png"))
+    small_image5=ImageTk.PhotoImage(RBGAImageSmall("pics/coca-cola.png"))
+    small_image6=ImageTk.PhotoImage(RBGAImageSmall("pics/santtu1.png"))
+    small_image7=ImageTk.PhotoImage(RBGAImageSmall("pics/pepis-make.png"))
+    small_image8= ImageTk.PhotoImage(RBGAImageSmall("pics/longdrinkKoff1.png"))
     
-    small_images= [small_image1, small_image2, small_image3, small_image4, small_image5, small_image6, small_image7]
+    small_images= [small_image1, small_image2, small_image3, small_image4, small_image5, small_image6, small_image7, small_image8]
 
 
 
@@ -86,43 +92,43 @@ def makeTopLevel(): ## opens new window and makes your chart
     for i in range(count):
         
         if a_list[i]==0:
-            imgLabel= Label(top,image=small_images[i]).grid(row=sTierInfo[0],column=sTierInfo[1])
+            imgLabel= Label(top,image=small_images[i],bg= 'black').grid(row=sTierInfo[0],column=sTierInfo[1])
             sTierInfo[0]=sTierInfo[0]+1
             if sTierInfo[0]==3:
                 sTierInfo[0]=1
                 sTierInfo[1]=sTierInfo[1]+1
         elif a_list[i]==1:
-            imgLabel= Label(top,image=small_images[i]).grid(row=aTierInfo[0],column=aTierInfo[1])
+            imgLabel= Label(top,image=small_images[i], bg='black').grid(row=aTierInfo[0],column=aTierInfo[1])
             aTierInfo[0]=aTierInfo[0]+1
             if aTierInfo[0]==5:
                 aTierInfo[0]=3
                 aTierInfo[1]=aTierInfo[1]+1
         elif a_list[i]==2:
-            imgLabel= Label(top,image=small_images[i]).grid(row=bTierInfo[0],column=bTierInfo[1])
+            imgLabel= Label(top,image=small_images[i], bg='black').grid(row=bTierInfo[0],column=bTierInfo[1])
             bTierInfo[0]=bTierInfo[0]+1
             if bTierInfo[0]==7:
                 bTierInfo[0]=5
                 bTierInfo[1]=bTierInfo[1]+1
         elif a_list[i]==3:
-            imgLabel= Label(top,image=small_images[i]).grid(row=cTierInfo[0],column=cTierInfo[1])
+            imgLabel= Label(top,image=small_images[i], bg='black').grid(row=cTierInfo[0],column=cTierInfo[1])
             cTierInfo[0]=cTierInfo[0]+1
             if cTierInfo[0]==9:
                 cTierInfo[0]=7
                 cTierInfo[1]=cTierInfo[1]+1
         elif a_list[i]==4:
-            imgLabel= Label(top,image=small_images[i]).grid(row=dTierInfo[0],column=dTierInfo[1])
+            imgLabel= Label(top,image=small_images[i], bg='black').grid(row=dTierInfo[0],column=dTierInfo[1])
             dTierInfo[0]=dTierInfo[0]+1
             if dTierInfo[0]==11:
                 dTierInfo[0]=9
                 dTierInfo[1]=dTierInfo[1]+1
         elif a_list[i]==5:
-            imgLabel= Label(top,image=small_images[i]).grid(row=eTierInfo[0],column=eTierInfo[1])
+            imgLabel= Label(top,image=small_images[i],bg='black').grid(row=eTierInfo[0],column=eTierInfo[1])
             eTierInfo[0]=eTierInfo[0]+1
             if eTierInfo[0]==13:
                 eTierInfo[0]=11
                 eTierInfo[1]=eTierInfo[1]+1
         elif a_list[i]==6:
-            imgLabel= Label(top,image=small_images[i]).grid(row=fTierInfo[0],column=fTierInfo[1])
+            imgLabel= Label(top,image=small_images[i],bg= 'black').grid(row=fTierInfo[0],column=fTierInfo[1])
             fTierInfo[0]=fTierInfo[0]+1
             if aTierInfo[0]==15:
                 fTierInfo[0]=13
@@ -130,7 +136,7 @@ def makeTopLevel(): ## opens new window and makes your chart
         
 
 def Buttons(number):
-    imgLabel= Label(image=list_images[number-1]).grid(row=1,columnspan=7)
+    imgLabel= Label(image=list_images[number-1],bg='black').grid(row=1,columnspan=7)
     STier= Button(root, text="S Tier", fg='black', bg='orange red',padx=10, pady=5 , command=lambda: sTier(number+1)).grid(row=2,column=0)
     ATier=Button(root, text="A tier", fg='black', bg='dark orange', padx=10, pady=5,command=lambda: aTier(number+1)).grid(row=2,column=1)
     BTier= Button(root, text='B tier',fg = 'black', bg='yellow', padx= 10, pady= 5, command=lambda: bTier(number+1)).grid(row=2, column=2)
