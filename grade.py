@@ -5,7 +5,8 @@ from PIL import ImageTk, Image
 
 a_list=[] ## set to global so I can access it in different methods
 root = Tk() ## root window set
-root.title('Grade this')
+root.title("Grading App")
+
 root.geometry("500x600")
 root.configure(bg='black')
 
@@ -42,24 +43,24 @@ def RBGAImageSmall(path):
 def makelists():
     global list_images
     global small_images
-    my_image1= ImageTk.PhotoImage(RBGAImageBig("pics/longdrink1.png"))
-    my_image2=ImageTk.PhotoImage(RBGAImageBig("pics/banana1.png"))
-    my_image3=ImageTk.PhotoImage(RBGAImageBig("pics/breezer.png"))
-    my_image4=ImageTk.PhotoImage(RBGAImageBig("pics/karhu1.png"))
-    my_image5=ImageTk.PhotoImage(RBGAImageBig("pics/coca-cola.png"))
-    my_image6=ImageTk.PhotoImage(RBGAImageBig("pics/santtu1.png"))
-    my_image7=ImageTk.PhotoImage(RBGAImageBig("pics/pepis-make.png"))
-    my_image8= ImageTk.PhotoImage(RBGAImageBig("pics/longdrinkKoff1.png"))
+    my_image1= ImageTk.PhotoImage(RBGAImageBig("pics/EDL1.png"))
+    my_image2=ImageTk.PhotoImage(RBGAImageBig("pics/ED1.png"))
+    my_image3=ImageTk.PhotoImage(RBGAImageBig("pics/focus1.png"))
+    my_image4=ImageTk.PhotoImage(RBGAImageBig("pics/jaffa1.png"))
+    my_image5=ImageTk.PhotoImage(RBGAImageBig("pics/madcroc1.png"))
+    my_image6=ImageTk.PhotoImage(RBGAImageBig("pics/rekorderlig1.png"))
+    my_image7=ImageTk.PhotoImage(RBGAImageBig("pics/somersby1.png"))
+    my_image8= ImageTk.PhotoImage(RBGAImageBig("pics/soulmate1.png"))
     list_images = [my_image1,my_image2, my_image3, my_image4,my_image5,my_image6,my_image7, my_image8]
 
-    small_image2=ImageTk.PhotoImage(RBGAImageSmall("pics/longdrink1.png"))
-    small_image1= ImageTk.PhotoImage(RBGAImageSmall("pics/banana1.png"))
-    small_image3=ImageTk.PhotoImage(RBGAImageSmall("pics/breezer.png"))
-    small_image4=ImageTk.PhotoImage(RBGAImageSmall("pics/karhu1.png"))
-    small_image5=ImageTk.PhotoImage(RBGAImageSmall("pics/coca-cola.png"))
-    small_image6=ImageTk.PhotoImage(RBGAImageSmall("pics/santtu1.png"))
-    small_image7=ImageTk.PhotoImage(RBGAImageSmall("pics/pepis-make.png"))
-    small_image8= ImageTk.PhotoImage(RBGAImageSmall("pics/longdrinkKoff1.png"))
+    small_image2=ImageTk.PhotoImage(RBGAImageSmall("pics/EDL1.png"))
+    small_image1= ImageTk.PhotoImage(RBGAImageSmall("pics/ED1.png"))
+    small_image3=ImageTk.PhotoImage(RBGAImageSmall("pics/focus1.png"))
+    small_image4=ImageTk.PhotoImage(RBGAImageSmall("pics/jaffa1.png"))
+    small_image5=ImageTk.PhotoImage(RBGAImageSmall("pics/madcroc1.png"))
+    small_image6=ImageTk.PhotoImage(RBGAImageSmall("pics/rekorderlig1.png"))
+    small_image7=ImageTk.PhotoImage(RBGAImageSmall("pics/somersby1.png"))
+    small_image8= ImageTk.PhotoImage(RBGAImageSmall("pics/soulmate1.png"))
     
     small_images= [small_image1, small_image2, small_image3, small_image4, small_image5, small_image6, small_image7, small_image8]
 
@@ -72,7 +73,7 @@ def makeTopLevel(): ## opens new window and makes your chart
     top.geometry("1000x900")
     top.title('Result')
     top.configure(bg='black')
-    resultTitle= Label(top,fg='white', text="Results are shown here", font= 'Helvetica 20 bold', bg='black').grid(row=0, columnspan=8)
+    resultTitle= Label(top,fg='yellow', text="Results are shown here", font= 'Helvetica 20 bold', bg='black').grid(row=0, columnspan=8)
     
     tierS= Label(top, text="S tier", background='orange red',padx=15, pady=50, font=8, fg='black',width=10).grid(row=1,rowspan=2, column=0)
     tierA= Label(top, text="A tier", background='dark orange',padx=15, pady=50, font=8, fg='black', width=10).grid(row=3, rowspan=2, column=0)
